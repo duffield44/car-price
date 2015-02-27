@@ -86,7 +86,28 @@ $(function(){
 		else {			
 			var carId = carData.makes[carMake].models[carModel].years[year].id;
 			console.log(carId);
+			getCar(carId);
 		}	
 	});
+
+	var getCar = function(Id){
+		
+		var request = {
+			styleId: Id,
+			fmt: 'json',
+			comparator: 'simple',
+			api_key: 'fk5fszh84rrtvy5kz3jj9pey'			
+		};
+
+		$.ajax({
+			url: "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid",
+			data: request,
+			dataType: "json",
+			type: "GET",
+		})
+		.done(function(result){
+			console.log(result);
+		});
+	}
 });
 
