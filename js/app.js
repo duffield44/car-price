@@ -1,5 +1,25 @@
 $(function(){
 
+	var makeSelection = function(){
+		var select = $('#make option:selected').val();
+		return select;
+	}
+
+	var modelSelection = function(){
+		var select = $('#model option:selected').val();
+		return select;
+	}		
+
+	var yearSelection = function(){
+		var select = $('#year option:selected').val();
+		return select;
+	}	
+
+	var getCarData = function(){
+		var cars = JSON.parse(window.localStorage.getItem('cars'));
+		return cars;
+	}
+
 	var request = {
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
@@ -30,25 +50,35 @@ $(function(){
 		$('#model option').slice(1).remove();
 		$('#year option').slice(1).remove();
 		
-		var makeSelection = $('#make option:selected').val();			
-		var carData = JSON.parse(window.localStorage.getItem('cars'));
-		$.each(carData.makes[makeSelection].models, function(i, model){
+		var carMake = makeSelection();		
+		var carData = getCarData();
+		$.each(carData.makes[carMake].models, function(i, model){
 			$('#model').append('<option value="' + i + '">' + model.name + '</option>');
 		});
 	});
 
-	// Select a Model
+	// Select a Model and the Years for this model will be selected from localStorage
 	$('#model').change(function(){
 
 		// Removes previous model years if a year had previously been selected
 		$('#year option').slice(1).remove();
 
-		var makeSelection = $('#make option:selected').val();
-		var modelSelection = $('#model option:selected').val();
-		var carData = JSON.parse(window.localStorage.getItem('cars'));
-		$.each(carData.makes[makeSelection].models[modelSelection].years, function(i, years){
+		var carMake = makeSelection();
+		var carModel = modelSelection();
+		var carData = getCarData();
+		$.each(carData.makes[carMake].models[carModel].years, function(i, years){
 			$('#year').append('<option value="' + i + '">' + years.year + '</option>');
 		});
+	});
+
+	// Identify Car ID when user clicks Go
+	$('#go-button').click(function(){
+		var carMake = makeSelection();
+		var carModel = modelSelection();
+		var year = yearSelection();
+		var carData = getCarData();
+		var carId = carData.makes[carMake].models[carModel].years[year].id;
+		console.log(carId);
 	});
 });
 
