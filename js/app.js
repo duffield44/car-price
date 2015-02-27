@@ -11,7 +11,8 @@ $(function(){
 			dataType: "json",
 			type: "GET",
 		})
-		.done(function(result){			
+		.done(function(result){
+			console.log(result);
 
 			$.each(result.makes, function(i, make){
 				$('#make').append('<option value="' + i + '">' + make.name + '</option>');	
@@ -25,13 +26,28 @@ $(function(){
 	// Select a Make and the corresponding Models will be selected from localStorage
 	$('#make').change(function(){
 
-		// Removes previous car models if a make had been previously selected 
+		// Removes previous car models & years if a make had been previously selected 
 		$('#model option').slice(1).remove();
+		$('#year option').slice(1).remove();
 		
 		var makeSelection = $('#make option:selected').val();			
 		var carData = JSON.parse(window.localStorage.getItem('cars'));
 		$.each(carData.makes[makeSelection].models, function(i, model){
 			$('#model').append('<option value="' + i + '">' + model.name + '</option>');
+		});
+	});
+
+	// Select a Model
+	$('#model').change(function(){
+
+		// Removes previous model years if a year had previously been selected
+		$('#year option').slice(1).remove();
+
+		var makeSelection = $('#make option:selected').val();
+		var modelSelection = $('#model option:selected').val();
+		var carData = JSON.parse(window.localStorage.getItem('cars'));
+		$.each(carData.makes[makeSelection].models[modelSelection].years, function(i, years){
+			$('#year').append('<option value="' + i + '">' + years.year + '</option>');
 		});
 	});
 });
