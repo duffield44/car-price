@@ -77,8 +77,16 @@ $(function(){
 		var carModel = modelSelection();
 		var year = yearSelection();
 		var carData = getCarData();
-		var carId = carData.makes[carMake].models[carModel].years[year].id;
-		console.log(carId);
+
+		// If user doesn't select a make, model or year, an alert will appear
+		if (year == "Select Year") {
+			// Change to a slideDown alert
+			alert("Oops! Please make sure you have selected a Make, Model, and Year for your car so that we can retrieve it's information");
+		} 
+		else {			
+			var carId = carData.makes[carMake].models[carModel].years[year].id;
+			console.log(carId);
+		}	
 	});
 });
 
