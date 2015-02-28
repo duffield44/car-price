@@ -71,12 +71,15 @@ $(function(){
 		});
 	});
 
-	// Identify Car ID when user clicks Go
+	// Click Go to fetch car styles
 	$('#go-button').click(function(){
 		var carMake = makeSelection();
 		var carModel = modelSelection();
-		var year = yearSelection();
+		var carYear = yearSelection();
 		var carData = getCarData();
+		var make = carData.makes[carMake].niceName;
+		var model = carData.makes[carMake].models[carModel].niceName;
+		var year = carData.makes[carMake].models[carModel].years[carYear].year;
 
 		// If user doesn't select a make, model or year, an alert will appear
 		if (year == "Select Year") {
@@ -84,28 +87,24 @@ $(function(){
 			alert("Oops! Please make sure you have selected a Make, Model, and Year for your car so that we can retrieve it's information");
 		} 
 		else {			
-			var carId = carData.makes[carMake].models[carModel].years[year].id;
-			console.log(carId);
-			getCar(carId);
+			getCarStyles(make, model, year);
 		}	
 	});
 
-
-	var getCar = function(Id){
+	// Use make, model, and year values to fetch car styles
+	var getCarStyles = function(make, model, year){
 		
 		var request = {
-			styleId: Id,
 			fmt: 'json',
-			comparator: 'simple',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'			
 		};
 
 		$.ajax({
-			url: "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid",
+			url: "https://api.edmunds.com/api/vehicle/v2/"+make+"/"+model+"/"+year+"/styles",
 			data: request,
 			dataType: "json",
 			type: "GET",
-		})
+		}) 
 		.done(function(result){
 			console.log(result);
 		});
