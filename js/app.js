@@ -107,6 +107,8 @@ $(function(){
 		}) 
 		.done(function(result){
 			console.log(result);
+			var carStyles = JSON.stringify(result);
+			window.localStorage.setItem('styles', carStyles);s
 		});
 	}
 });
