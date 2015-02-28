@@ -20,6 +20,23 @@ $(function(){
 		return cars;
 	}
 
+	var getStyleData = function(){
+		var styles = JSON.parse(window.localStorage.getItem('styles'));
+		return styles;
+	}
+
+	var showCarStyles = function(){
+		var carStyles = getStyleData();
+		console.log(carStyles);
+
+		$('#choose-style option').slice(1).remove();
+		$('.templates .car-name').show();
+
+		$.each(carStyles.styles, function(i, style){
+			$('#choose-style').append('<option val="'+i+'">' + style.name + '</option>');
+		});
+	}
+
 	var request = {
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
@@ -49,9 +66,12 @@ $(function(){
 		// Removes previous car models & years if a make had been previously selected 
 		$('#model option').slice(1).remove();
 		$('#year option').slice(1).remove();
+		// Add Make Name to h2 tag
+		var makeText = $('#make option:selected').text();
+		$('#make-name').text(makeText);
 		
 		var carMake = makeSelection();		
-		var carData = getCarData();
+		var carData = getCarData();		
 		$.each(carData.makes[carMake].models, function(i, model){
 			$('#model').append('<option value="' + i + '">' + model.name + '</option>');
 		});
@@ -62,6 +82,9 @@ $(function(){
 
 		// Removes previous model years if a year had previously been selected
 		$('#year option').slice(1).remove();
+		// Add Model Name to h2 tag	
+		var modelText = $('#model option:selected').text();
+		$('#model-name').text(modelText);
 
 		var carMake = makeSelection();
 		var carModel = modelSelection();
@@ -69,6 +92,12 @@ $(function(){
 		$.each(carData.makes[carMake].models[carModel].years, function(i, years){
 			$('#year').append('<option value="' + i + '">' + years.year + '</option>');
 		});
+	});
+
+	$('#year').change(function(){
+		//Add Year to h2 tag
+		var yearText = $('#year option:selected').text();
+		$('#year-name').text(yearText);
 	});
 
 	// Click Go to fetch car styles
@@ -108,7 +137,8 @@ $(function(){
 		.done(function(result){
 			console.log(result);
 			var carStyles = JSON.stringify(result);
-			window.localStorage.setItem('styles', carStyles);s
+			window.localStorage.setItem('styles', carStyles);
+			showCarStyles();
 		});
 	}
 });
