@@ -15,6 +15,11 @@ $(function(){
 		return select;
 	}	
 
+	var selectedStyle = function(){
+		var style = $('#choose-style option:selected').val();
+		return style;
+	}
+		
 	var getCarData = function(){
 		var cars = JSON.parse(window.localStorage.getItem('cars'));
 		return cars;
@@ -33,7 +38,7 @@ $(function(){
 		$('.templates .car-name').show();
 
 		$.each(carStyles.styles, function(i, style){
-			$('#choose-style').append('<option val="'+i+'">' + style.name + '</option>');
+			$('#choose-style').append('<option value="'+i+'">' + style.name + '</option>');
 		});
 	}
 
@@ -145,6 +150,35 @@ $(function(){
 			var carStyles = JSON.stringify(result);
 			window.localStorage.setItem('styles', carStyles);
 			showCarStyles();
+		});
+	}
+
+	// Click Start Appraisal
+	$('#start-appraise').click(function(){
+		var carStyles = getStyleData();
+		var style = selectedStyle();
+		var styleId = carStyles.styles[style].id;
+		console.log(styleId);
+		getCarPic(styleId);
+	});
+
+	var getCarPic = function(Id){
+
+		var request = {
+			styleId: Id,
+			fmt: 'json',
+			comparator: 'simple',			
+			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
+		};
+
+		$.ajax({
+			url: "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid",
+			data: request,
+			dataType: "json",
+			type: "GET",
+		})
+		.done(function(result){
+			console.log(result);	
 		});
 	}
 });
