@@ -194,7 +194,7 @@ $(function(){
 		});
 	}
 
-	// Click Appraise Car
+	// Click Appraise Car to getTmv()
 	$('#appraise-car').click(function(){
 		var carStyles = getStyleData();
 		var style = selectedStyle();
@@ -205,6 +205,7 @@ $(function(){
 		getTmv(id, condition, mileage, zip);		
 	});
 
+	// Makes Ajax call to Edmunds API for TMV
 	var getTmv = function(id, condition, mileage, zip){
 
 		var request = {
@@ -215,6 +216,7 @@ $(function(){
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
 		}
+
 		$.ajax({
 			url: "https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv",
 			data: request,
@@ -223,6 +225,11 @@ $(function(){
 		}) 
 		.done(function(result){
 			console.log(result);
+			// Show prices section and display prices
+			$('.trade-in p').text('$' + result.tmv.totalWithOptions.usedTradeIn);
+			$('.private p').text('$' + result.tmv.totalWithOptions.usedPrivateParty);
+			$('.dealer p').text('$' + result.tmv.totalWithOptions.usedTmvRetail);
+			$('.prices').show();
 		});
 	}
 });
