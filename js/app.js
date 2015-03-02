@@ -167,7 +167,7 @@ $(function(){
 		var request = {
 			styleId: Id,
 			fmt: 'json',
-			comparator: 'simple',			
+			comparator: 'simple' ,			
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
 		};
 
@@ -178,7 +178,12 @@ $(function(){
 			type: "GET",
 		})
 		.done(function(result){
-			console.log(result);	
+			console.log(result);
+			// Show car img and appraisal details
+			var url = result[0].id;
+			var imgUrl = url.slice(9);			
+			$('#car-image').attr('src', 'http://media.ed.edmunds-media.com' + imgUrl + '_500.jpg');
+			$('.car-result').show();			
 		});
 	}
 });
