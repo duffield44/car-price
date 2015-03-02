@@ -1,3 +1,45 @@
+body {
+	font-size: 1em;
+	font-family: "Open Sans", sans-serif;
+	background-image: url("../images/car-background-modified.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+/* Main Grid */
+
+.main {
+	margin: 2em auto;
+	max-width: 45em;
+	border-radius: 20px;
+	background-color: white;
+	text-align: center;
+	overflow: hidden;
+}
+
+/*--- Header Section ---*/
+
+.header {
+	margin-top: 3rem;
+	font-family: "Raleway", "Open Sans", sans-serif;
+}
+
+.header .title {
+	font-size: 7em;	
+	font-weight: 800;
+}
+
+.header .title span {
+	font-size: 0.5em;
+}
+
+.header .tag {
+	font-family: "Open Sans", sans-serif;
+}
+
+
+
 .hidden {
 	display: none;
 }
