@@ -111,6 +111,12 @@ $(function(){
 		$('#year-name').text(yearText);
 	});
 
+	$('#choose-style').change(function(){
+		// Add car style to h3 tag
+		var styleText = $('#choose-style option:selected').text();
+		$('.car-style').text(styleText);
+	})
+
 	// Click Go to fetch car styles
 	$('#go-button').click(function(){
 		var carMake = makeSelection();
@@ -162,6 +168,7 @@ $(function(){
 		getCarPic(styleId);
 	});
 
+	// Performs ajax call to Edmunds API to retrieve the user's selected car image
 	var getCarPic = function(Id){
 
 		var request = {
