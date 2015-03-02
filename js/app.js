@@ -193,5 +193,37 @@ $(function(){
 			$('.car-result').show();			
 		});
 	}
+
+	// Click Appraise Car
+	$('#appraise-car').click(function(){
+		var carStyles = getStyleData();
+		var style = selectedStyle();
+		var id = carStyles.styles[style].id;
+		var condition = $('#condition option:selected').val();
+		var mileage = $('#mileage').val();
+		var zip = $('#zipcode').val();		
+		getTmv(id, condition, mileage, zip);		
+	});
+
+	var getTmv = function(id, condition, mileage, zip){
+
+		var request = {
+			styleid: id,
+			condition: condition,
+			mileage: mileage,
+			zip: zip,
+			fmt: 'json',
+			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
+		}
+		$.ajax({
+			url: "https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv",
+			data: request,
+			dataType: "json",
+			type: "GET",
+		}) 
+		.done(function(result){
+			console.log(result);
+		});
+	}
 });
 
