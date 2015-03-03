@@ -15,7 +15,7 @@
 		<h1 class="title">PRICE<span>MyRide</span></h1>
 		<h2 class="tag">Get the post-haggle price for your used car.</h2>
 	</header>
-	<div class="user-car">
+	<section class="user-car">
 		<select name="make" id="make" required>
 			<option value="Select Make" selected>Select Make</option>
 		</select>
@@ -26,7 +26,7 @@
 			<option value="Select Year" selected>Select Year</option>
 		</select>
 		<input type="button" value="Go" id="go-button">
-	</div>
+	</section>
 	<section class="templates">
 		<div class="car-name hidden">
 			<h2 class="name"><span id="make-name"></span> <span id="model-name"></span> <span id="year-name"></span></h2>	
@@ -37,7 +37,9 @@
 			<input type="button" value="Start Appraisal" id="start-appraise">	
 		</div>
 		<div class="car-result hidden">
-			<img src="" id="car-image">
+			<div class="image">
+				<img src="" id="car-image">
+			</div>	
 			<div class="selections">
 				<h3>Vehicle Mileage</h3>
 				<input type="text" id="mileage" placeholder="e.g. 60000">

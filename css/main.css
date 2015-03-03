@@ -14,15 +14,15 @@ body {
 	max-width: 45em;
 	border-radius: 20px;
 	background-color: white;
-	text-align: center;
 	overflow: hidden;
 }
 
 /*--- Header Section ---*/
 
 .header {
-	margin-top: 3rem;
+	margin: 3rem 0 1.5rem 0;
 	font-family: "Raleway", "Open Sans", sans-serif;
+	text-align: center;
 }
 
 .header .title {
@@ -32,13 +32,70 @@ body {
 
 .header .title span {
 	font-size: 0.5em;
+	font-weight: 400;
 }
 
 .header .tag {
+	font-size: 1em;
 	font-family: "Open Sans", sans-serif;
 }
 
+/*--- User Car Section ---*/
 
+.user-car {
+	margin-bottom: 3rem;
+	text-align: center;
+}
+
+/*--- Car Name Section ---*/
+
+.car-name {
+	margin: 0 auto 1rem auto;
+	text-align: center;
+	width: 70%;
+	background: Lightgray;
+	padding: 1rem;
+	border-radius: 5px;
+}
+
+.car-name h2 {
+	font-size: 2.3em;
+	margin-bottom: 0.6rem;
+}
+
+.car-name h3 {
+	font-size: 1.3em;
+}
+
+#choose-style, #start-appraise {
+	margin-top: 1rem;
+}
+
+/*--- Car Result Section ---*/
+
+.car-result {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.image {
+	margin-bottom: 1rem;
+}
+
+.image img {
+	width: 100%;
+	height: auto;
+}
+
+.selections {
+	padding: 1rem;
+	border-radius: 5px;
+	background-color: LightGray;
+}
+
+.button {
+	text-align: center;
+}
 
 .hidden {
 	display: none;
