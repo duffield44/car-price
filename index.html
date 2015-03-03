@@ -16,24 +16,32 @@
 		<h2 class="tag">Get the post-haggle price for your used car.</h2>
 	</header>
 	<section class="user-car">
-		<select name="make" id="make" required>
+		<div class="select-style">
+		<select name="make" class="styled" id="make" required>
 			<option value="Select Make" selected>Select Make</option>
 		</select>
+		</div>
+		<div class="select-style">
 		<select name="model" id="model" required>
 			<option value="Select Model" selected>Select Model</option>
 		</select>
+		</div>
+		<div class="select-style">
 		<select name="year" id="year" required>
 			<option value="Select Year" selected>Select Year</option>
 		</select>
+		</div>
 		<input type="button" value="Go" id="go-button">
 	</section>
 	<section class="templates">
 		<div class="car-name hidden">
 			<h2 class="name"><span id="make-name"></span> <span id="model-name"></span> <span id="year-name"></span></h2>	
 			<h3 class="car-style"></h3>
+			<div class="select-style">
 			<select name="" id="choose-style">
 				<option value="Choose Style" selected>Choose Style</option>
 			</select>	
+			</div>
 			<input type="button" value="Start Appraisal" id="start-appraise">	
 		</div>
 		<div class="car-result hidden">
@@ -45,14 +53,16 @@
 					<h3>Vehicle Mileage</h3>
 					<input type="text" id="mileage" placeholder="e.g. 60000">
 					<h3>Vehicle Condition</h3>
-					<select name="" id="condition">
-						<option value="" selected>Select Condition</option>
-						<option value="outstanding" selected>Outstanding</option>
-						<option value="clean" selected>Clean</option>
-						<option value="average" selected>Average</option>
-						<option value="rough" selected>Rough</option>
-						<option value="damaged" selected>Damaged</option>
-					</select>
+					<div class="select-style condition">
+						<select name="" id="condition">
+							<option value="" selected>Select Condition</option>
+							<option value="outstanding" selected>Outstanding</option>
+							<option value="clean" selected>Clean</option>
+							<option value="average" selected>Average</option>
+							<option value="rough" selected>Rough</option>
+							<option value="damaged" selected>Damaged</option>
+						</select>
+					</div>
 					<h3>Zipcode</h3>
 					<input type="text" id="zipcode" placeholder="e.g. 33993">
 				</div>
