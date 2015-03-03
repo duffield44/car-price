@@ -242,5 +242,24 @@ $(function(){
 		$('.popup').hide();
 	});
 
+	$('.prices h2 i').click(function(){
+		$('.prices-popup').show().find('p').text('This price is the Edmunds.com TMV® price. It is Edmunds.com’s determination of the current average base [“dealer retail”] [“private party”] [“dealer trade-in”] price in the area indicated by the Zip Code provided, unadjusted for color or any options. (If no Zip Code was provided, this price is the national price.)');
+	});
+
+	$('.trade-in i').click(function(){
+		$('.prices-popup').show().find('p').text('This is the amount you can expect to receive when you trade in your used car and purchase a new car. The trade-in price is usually credited as a down payment on the new car.');
+	});
+
+	$('.private i').click(function(){
+		$('.prices-popup').show().find('p').text('This is the amount at which the car is sold to or purchased by a private party, not a car dealer. This amount is usually more than the trade-in price but less than the dealer retail price.');
+	});
+
+	$('.dealer i').click(function(){
+		$('.prices-popup').show().find('p').text('Dealer Retail is what other customers have paid for similar cars in your area. Dealer retail will usually be higher than private party prices and much higher than trade-in prices.');
+	});
+
+	$('#close-prices-popup').click(function(){
+		$('.prices-popup').hide();
+	});
 });
 

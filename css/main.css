@@ -8,6 +8,10 @@ body {
 	background-size: cover;
 }
 
+b {
+	font-weight: 600;
+}
+
 /*Select Boxes*/
 .select-style {
 	display: inline-block;
@@ -203,7 +207,7 @@ input {
 	position: relative;
 }
 
-.popup {
+.popup, .prices-popup {
 	display: none;
 	font-size: 0.8em;
 	position: absolute;
@@ -216,12 +220,13 @@ input {
 	border-radius: 3px;
 }
 
-.popup p {
-	margin-bottom: 0.5rem;
+.prices-popup {
+	text-align: left;
+	top: 0px;
 }
 
-.popup p b {
-	font-weight: 600;
+.popup p, .prices-popup p {
+	margin-bottom: 0.5rem;
 }
 
 /*--- Prices Section ---*/
@@ -272,5 +277,5 @@ input {
 
 
 .hidden {
-	display: ;
+	display: none;
 }
