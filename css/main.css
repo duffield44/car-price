@@ -28,11 +28,13 @@ body {
 .header .title {
 	font-size: 7em;	
 	font-weight: 800;
+	color: #031CA6;
 }
 
 .header .title span {
 	font-size: 0.5em;
 	font-weight: 400;
+	color: Black;
 }
 
 .header .tag {
@@ -53,7 +55,7 @@ body {
 	margin: 0 auto 1rem auto;
 	text-align: center;
 	width: 70%;
-	background: Lightgray;
+	background: #F1A574;
 	padding: 1rem;
 	border-radius: 5px;
 }
@@ -90,7 +92,7 @@ body {
 .selections {
 	padding: 1rem;
 	border-radius: 5px;
-	background-color: LightGray;
+	background-color: #F1A574;
 	overflow: auto;
 	margin-bottom: 2rem;
 }
@@ -125,7 +127,7 @@ body {
 	margin: 0 auto 2rem auto;
 	padding: 1rem;
 	border-radius: 5px;
-	background-color: LightGray;
+	background-color: #F1A574;
 	text-align: center;
 }
 
@@ -133,18 +135,21 @@ body {
 	font-family: "Raleway", "Open Sans", sans-serif;
 	font-size: 3.3em;
 	font-weight: 800;
+	color: #031CA6;
 	margin-bottom: 2rem;
 }
 
 .prices h2 #myride {
 	font-size: 0.5em;
 	font-weight: 400;
+	color: Black;;
 }
 
 .prices h2 #tmv {
 	font-family: "Open Sans", sans-serif;
 	font-size: 0.4em;
 	font-weight: 400;
+	color: Black;
 }
 
 
