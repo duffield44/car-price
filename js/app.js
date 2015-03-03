@@ -232,5 +232,15 @@ $(function(){
 			$('.prices').show();
 		});
 	}
+
+	// Click on info buttons
+	$('.car-condition i').click(function(){
+		$('.popup').show();
+	});
+
+	$('#close-popup').click(function(){
+		$('.popup').hide();
+	});
+
 });
 

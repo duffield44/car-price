@@ -49,11 +49,21 @@
 			<div class="image">
 				<img src="" id="car-image">
 			</div>
-			<div class="selections">	
+			<div class="selections">
+				<div class="popup-container">	
+					<div class="popup">
+						<p><b>Outstanding</b> - Exceptional mechanical, exterior and interior condition; requires no reconditioning.</p>
+						<p><b>Clean</b> - Some normal wear but no major mechanical or cosmetic problems; may require limited reconditioning. </p>
+						<p><b>Average</b> - May have a few mechanical and/or cosmetic problems and may require a considerable amount of reconditioning</p>
+						<p><b>Rough</b> - Several mechanical and/or cosmetic problems requiring significant repairs.</p>
+						<p><b>Damaged</b> - Major mechanical and/or body damage that may render it in non-safe running condition.</p>
+						<button id="close-popup">Close</button>
+					</div>
+				</div>
 				<div class="car-details">
-					<h3>Vehicle Mileage  <i class="fa fa-info"></i></h3>
+					<h3>Vehicle Mileage</h3>
 					<input type="text" id="mileage" placeholder="e.g. 60000">
-					<h3>Vehicle Condition  <i class="fa fa-info"></i></h3>
+					<h3 class="car-condition">Vehicle Condition  <i class="fa fa-info"></i></h3>
 					<div class="select-style condition">
 						<select name="" id="condition">
 							<option value="" selected>Select Condition</option>
@@ -64,7 +74,7 @@
 							<option value="damaged" selected>Damaged</option>
 						</select>
 					</div>
-					<h3>Zipcode  <i class="fa fa-info"></i></h3>
+					<h3>Zipcode</h3>
 					<input type="text" id="zipcode" placeholder="e.g. 33993">
 				</div>
 				<div class="appraise">
@@ -78,15 +88,15 @@
 			<h2>PRICE<span id="myride">MyRide</span><span id="tmv">'s True Market Value  <i class="fa fa-info"></i></span></h2>
 			<ul>
 				<li class="trade-in">
-					<h3>Trade In</h3>
+					<h3>Trade In  <i class="fa fa-info"></i></h3>
 					<p></p>
 				</li>
 				<li class="private">
-					<h3>Private Party</h3>
+					<h3>Private Party  <i class="fa fa-info"></i></h3>
 					<p></p>
 				</li>
 				<li class="dealer">
-					<h3>Dealer Retail</h3>
+					<h3>Dealer Retail  <i class="fa fa-info"></i></h3>
 					<p></p>
 				</li>		
 			</ul>		
