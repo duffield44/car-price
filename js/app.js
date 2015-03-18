@@ -71,8 +71,10 @@ $(function(){
 		// Removes previous car models & years if a make had been previously selected 
 		$('#model option').slice(1).remove();
 		$('#year option').slice(1).remove();
-		// Hides car-name div if user re-selects
+		// Hides car-name, car-result & prices divs if user re-selects
 		$('.car-name').hide();
+		$('.car-result').hide();
+		$('.prices').hide();
 		// Add Make Name to h2 tag
 		var makeText = $('#make option:selected').text();
 		$('#make-name').text(makeText);
@@ -89,8 +91,10 @@ $(function(){
 
 		// Removes previous model years if a year had previously been selected
 		$('#year option').slice(1).remove();
-		// Hides car-name div if user re-selects
+		// Hides car-name, car-result & prices divs if user re-selects
 		$('.car-name').hide();
+		$('.car-result').hide();
+		$('.prices').hide();
 		// Add Model Name to h2 tag	
 		var modelText = $('#model option:selected').text();
 		$('#model-name').text(modelText);
@@ -104,8 +108,10 @@ $(function(){
 	});
 
 	$('#year').change(function(){
-		// Hides car-name div if user re-selects
+		// Hides car-name, car-result & prices divs if user re-selects
 		$('.car-name').hide();
+		$('.car-result').hide();
+		$('.prices').hide();
 		//Add Year to h2 tag
 		var yearText = $('#year option:selected').text();
 		$('#year-name').text(yearText);
