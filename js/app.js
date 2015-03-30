@@ -35,7 +35,7 @@ $(function(){
 		console.log(carStyles);
 
 		$('#choose-style option').slice(1).remove();
-		$('.templates .car-name').show();
+		$('.car-name').slideDown(300);
 
 		$.each(carStyles.styles, function(i, style){
 			$('#choose-style').append('<option value="'+i+'">' + style.name + '</option>');
@@ -180,6 +180,9 @@ $(function(){
 	// Performs ajax call to Edmunds API to retrieve the user's selected car image
 	var getCarPic = function(Id){
 
+		// Start loading gif
+		$('.gif, .gif-background').show();
+
 		var request = {
 			styleId: Id,
 			fmt: 'json',
@@ -199,7 +202,11 @@ $(function(){
 			var url = result[0].id;
 			var imgUrl = url.slice(9);			
 			$('#car-image').attr('src', 'http://media.ed.edmunds-media.com' + imgUrl + '_500.jpg');
-			$('.car-result').show();			
+			$('#car-image').load(function(){
+				$('.gif, .gif-background').fadeOut(500);
+				$('.car-result').slideDown(500);
+				$('html, body').animate({scrollTop: $('#car-image').offset().top }, 1000);			
+			});
 		});
 	}
 
@@ -238,7 +245,8 @@ $(function(){
 			$('.trade-in p').text('$' + result.tmv.totalWithOptions.usedTradeIn);
 			$('.private p').text('$' + result.tmv.totalWithOptions.usedPrivateParty);
 			$('.dealer p').text('$' + result.tmv.totalWithOptions.usedTmvRetail);
-			$('.prices').show();
+			$('.prices').slideDown(500);
+			$('html, body').animate({scrollTop: $('.prices').offset().top }, 1000);			
 		});
 	}
 
