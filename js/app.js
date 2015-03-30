@@ -59,6 +59,9 @@ $(function(){
 			$.each(result.makes, function(i, make){
 				$('#make').append('<option value="' + i + '">' + make.name + '</option>');	
 			});		
+			
+			// Loading gif fadeout
+			$('.gif, .gif-background').fadeOut(300);
 
 			var carData = JSON.stringify(result);
 			window.localStorage.setItem('cars', carData);

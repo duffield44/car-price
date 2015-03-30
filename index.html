@@ -12,102 +12,107 @@
 </head>
 <body>
 	<div class="main">
-	<header class="header">
-		<h1 class="title">PRICE<span>MyRide</span></h1>
-		<h2 class="tag">Get the post-haggle price for your used car.</h2>
-	</header>
-	<section class="user-car">
-		<div class="select-style">
-			<select name="make" class="styled" id="make" required>
-				<option value="Select Make" selected>Select Make</option>
-			</select>
-		</div>
-		<div class="select-style">
-			<select name="model" id="model" required>
-				<option value="Select Model" selected>Select Model</option>
-			</select>
-		</div>
-		<div class="select-style">
-			<select name="year" id="year" required>
-				<option value="Select Year" selected>Select Year</option>
-			</select>
-		</div>
-		<button value="Go" id="go-button">Go</button>
-	</section>
-	<section class="templates">
-		<div class="car-name hidden">
-			<h2 class="name"><span id="make-name"></span> <span id="model-name"></span> <span id="year-name"></span></h2>	
-			<h3 class="car-style"></h3>
-			<div class="select-style">
-			<select name="" id="choose-style">
-				<option value="Choose Style" selected>Choose Style</option>
-			</select>	
+		<section class="intro">
+			<div class="gif-background"></div>
+			<img src="images/loading.gif" class="gif">
+			
+			<header class="header">
+				<h1 class="title">PRICE<span>MyRide</span></h1>
+				<h2 class="tag">Get the post-haggle price for your used car.</h2>
+			</header>
+			<section class="user-car">
+				<div class="select-style">
+					<select name="make" class="styled" id="make" required>
+						<option value="Select Make" selected>Select Make</option>
+					</select>
+				</div>
+				<div class="select-style">
+					<select name="model" id="model" required>
+						<option value="Select Model" selected>Select Model</option>
+					</select>
+				</div>
+				<div class="select-style">
+					<select name="year" id="year" required>
+						<option value="Select Year" selected>Select Year</option>
+					</select>
+				</div>
+				<button value="Go" id="go-button">Go</button>
+			</section>
+		</section>
+		<section class="templates">
+			<div class="car-name hidden">
+				<h2 class="name"><span id="make-name"></span> <span id="model-name"></span> <span id="year-name"></span></h2>	
+				<h3 class="car-style"></h3>
+				<div class="select-style">
+				<select name="" id="choose-style">
+					<option value="Choose Style" selected>Choose Style</option>
+				</select>	
+				</div>
+				<button value="Start Appraisal" id="start-appraise">Start Appraisal</button>
 			</div>
-			<button value="Start Appraisal" id="start-appraise">Start Appraisal</button>
-		</div>
-		<div class="car-result hidden">
-			<div class="image">
-				<img src="" id="car-image">
+			<div class="car-result hidden">
+				<div class="image">
+					<img src="" id="car-image">
+				</div>
+				<div class="selections">
+					<div class="popup-container">	
+						<div class="popup">
+							<p><b>Outstanding</b> - Exceptional mechanical, exterior and interior condition; requires no reconditioning.</p>
+							<p><b>Clean</b> - Some normal wear but no major mechanical or cosmetic problems; may require limited reconditioning. </p>
+							<p><b>Average</b> - May have a few mechanical and/or cosmetic problems and may require a considerable amount of reconditioning</p>
+							<p><b>Rough</b> - Several mechanical and/or cosmetic problems requiring significant repairs.</p>
+							<p><b>Damaged</b> - Major mechanical and/or body damage that may render it in non-safe running condition.</p>
+							<button id="close-popup">Close</button>
+						</div>
+					</div>
+					<div class="car-details">
+						<h3>Vehicle Mileage</h3>
+						<input type="text" id="mileage" placeholder="e.g. 60000">
+						<h3 class="car-condition">Vehicle Condition  <i class="fa fa-info-circle"></i></h3>
+						<div class="select-style condition">
+							<select name="" id="condition">
+								<option value="" selected>Select Condition</option>
+								<option value="outstanding">Outstanding</option>
+								<option value="clean">Clean</option>
+								<option value="average">Average</option>
+								<option value="rough">Rough</option>
+								<option value="damaged">Damaged</option>
+							</select>
+						</div>
+						<h3>Zipcode</h3>
+						<input type="text" id="zipcode" placeholder="e.g. 33993">
+					</div>
+					<div class="appraise">
+						<h2>Please fill in your vehicle's details</h2>	
+						<button value="Price My Ride" id="appraise-car">PRICE<span>MyRide</span></button>
+					</div>
+					
+				</div>
 			</div>
-			<div class="selections">
-				<div class="popup-container">	
-					<div class="popup">
-						<p><b>Outstanding</b> - Exceptional mechanical, exterior and interior condition; requires no reconditioning.</p>
-						<p><b>Clean</b> - Some normal wear but no major mechanical or cosmetic problems; may require limited reconditioning. </p>
-						<p><b>Average</b> - May have a few mechanical and/or cosmetic problems and may require a considerable amount of reconditioning</p>
-						<p><b>Rough</b> - Several mechanical and/or cosmetic problems requiring significant repairs.</p>
-						<p><b>Damaged</b> - Major mechanical and/or body damage that may render it in non-safe running condition.</p>
-						<button id="close-popup">Close</button>
+			<div class="prices hidden">
+				<div class="popup-container">
+					<div class="prices-popup">	
+						<p></p>
+						<button id="close-prices-popup">Close</button>				
 					</div>
 				</div>
-				<div class="car-details">
-					<h3>Vehicle Mileage</h3>
-					<input type="text" id="mileage" placeholder="e.g. 60000">
-					<h3 class="car-condition">Vehicle Condition  <i class="fa fa-info-circle"></i></h3>
-					<div class="select-style condition">
-						<select name="" id="condition">
-							<option value="" selected>Select Condition</option>
-							<option value="outstanding">Outstanding</option>
-							<option value="clean">Clean</option>
-							<option value="average">Average</option>
-							<option value="rough">Rough</option>
-							<option value="damaged">Damaged</option>
-						</select>
-					</div>
-					<h3>Zipcode</h3>
-					<input type="text" id="zipcode" placeholder="e.g. 33993">
-				</div>
-				<div class="appraise">
-					<h2>Please fill in your vehicle's details</h2>	
-					<button value="Price My Ride" id="appraise-car">PRICE<span>MyRide</span></button>
-				</div>
-				
+				<h2>PRICE<span id="myride">MyRide</span><span id="tmv">'s True Market Value  <i class="fa fa-info-circle"></i></span></h2>
+				<ul>
+					<li class="trade-in">
+						<h3>Trade In  <i class="fa fa-info-circle"></i></h3>
+						<p></p>
+					</li>
+					<li class="private">
+						<h3>Private Party  <i class="fa fa-info-circle"></i></h3>
+						<p></p>
+					</li>
+					<li class="dealer">
+						<h3>Dealer Retail  <i class="fa fa-info-circle"></i></h3>
+						<p></p>
+					</li>		
+				</ul>		
 			</div>
-		</div>
-		<div class="prices hidden">
-			<div class="popup-container">
-				<div class="prices-popup">	
-					<p></p>
-					<button id="close-prices-popup">Close</button>				
-				</div>
-			</div>
-			<h2>PRICE<span id="myride">MyRide</span><span id="tmv">'s True Market Value  <i class="fa fa-info-circle"></i></span></h2>
-			<ul>
-				<li class="trade-in">
-					<h3>Trade In  <i class="fa fa-info-circle"></i></h3>
-					<p></p>
-				</li>
-				<li class="private">
-					<h3>Private Party  <i class="fa fa-info-circle"></i></h3>
-					<p></p>
-				</li>
-				<li class="dealer">
-					<h3>Dealer Retail  <i class="fa fa-info-circle"></i></h3>
-					<p></p>
-				</li>		
-			</ul>		
-		</div>
-	</section>
+		</section>
 	</div>
 </body>
 </html>

@@ -80,6 +80,30 @@ input {
 	overflow: hidden;
 }
 
+/*--- Intro Section ---*/
+
+.intro {
+	overflow: auto;
+	position: relative;
+}
+
+/*--- Loading GIF ---*/
+
+.intro .gif-background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: Lightgoldenrodyellow;
+  	opacity: 0.9;
+}
+
+.intro .gif {
+	position: absolute;
+	left: 50%;
+  	top: 50%;
+  	transform: translate(-50%, -50%);
+}
+
 /*--- Header Section ---*/
 
 .header {
