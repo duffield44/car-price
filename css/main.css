@@ -6,6 +6,7 @@ body {
 	background-image: url("../images/car-background-modified.png");
 	background-repeat: no-repeat;
 	background-size: cover;
+	padding: 0 1rem;
 }
 
 b {
@@ -187,8 +188,8 @@ input {
 	margin-bottom: 2rem;
 }
 
-.selections .car-details,
-.selections .appraise {
+.car-details,
+.appraise {
 	display: inline-block;
 	float: left;
 	width: 50%;	
@@ -199,7 +200,7 @@ input {
 	margin-bottom: 0.5rem;
 }
 
-#mileage, .condition, #zip-code {
+#mileage, .condition, #zipcode {
 	margin-bottom: 1rem;
 }
 
@@ -270,20 +271,20 @@ input {
 	font-size: 3.3em;
 	font-weight: 800;
 	color: #031CA6;
-	margin-bottom: 2rem;
 }
 
 .prices h2 #myride {
 	font-size: 0.5em;
 	font-weight: 400;
-	color: Black;;
+	color: Black; 	
 }
 
-.prices h2 #tmv {
+.prices h3 {
 	font-family: "Open Sans", sans-serif;
-	font-size: 0.4em;
+	font-size: 1.4em;
 	font-weight: 400;
-	color: Black;
+	color: Black;	
+	margin-bottom: 2rem;
 }
 
 
@@ -296,11 +297,85 @@ input {
 	background-color: #FFECC2;
 }
 
-.prices li h3 {
+.prices li h4 {
 	margin-bottom: 0.5rem;
 }
 
 
 .hidden {
-	display: none;
+	display: ;
+}
+
+/*--- Responsive Media Queries ---*/
+
+@media only screen and (max-width: 760px) {
+	.prices li {
+		display: block;
+		width: 50%;
+		margin: 0 auto;
+		margin-bottom: 0.5rem;
+	}
+}
+
+@media only screen and (max-width: 660px) {	
+	.car-details, .appraise {
+		display: block;
+		float: none;
+		width: 100%;
+	}
+	.appraise {
+		margin-top: 2rem;
+	}
+	.appraise h2 {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	.header .title {
+		font-size: 5em;
+	}
+}
+
+@media only screen and (max-width: 514px) {
+	.user-car .select-style, #go-button {
+		display: block;
+		margin: 0.5rem auto;
+	}
+	.user-car .select-style {
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width: 470px) {
+	.tmv {
+		font-size: 0.7em;
+	}
+	.prices li {
+		width: 70%;
+	}
+}
+
+@media only screen and (max-width: 440px) {
+	.header .title {
+		font-size: 4em;
+	}
+}
+
+@media only screen and (max-width: 390px) {
+	.header .title {
+		font-size: 3em;
+	}
+	.header .tag {
+		padding: 0 0.5rem;
+	}
+	#mileage, #zipcode {
+		width: 85%;
+	}
+	.tmv {
+		font-size: 0.6em;
+	}
+	.prices li {
+		width: 80%;
+	}
 }

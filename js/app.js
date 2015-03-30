@@ -259,7 +259,7 @@ $(function(){
 		$('.popup').hide();
 	});
 
-	$('.prices h2 i').click(function(){
+	$('.prices h3 i').click(function(){
 		$('.prices-popup').show().find('p').text('This price is the Edmunds.com TMV® price. It is Edmunds.com’s determination of the current average base [“dealer retail”] [“private party”] [“dealer trade-in”] price in the area indicated by the Zip Code provided, unadjusted for color or any options. (If no Zip Code was provided, this price is the national price.)');
 	});
 
