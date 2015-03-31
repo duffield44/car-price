@@ -44,7 +44,6 @@ $(function(){
 
 	// Setting height of background img
 	var windowHeight = $(window).height();
-	console.log(windowHeight);
 	$('body').css('min-height', windowHeight);
 
 
@@ -77,6 +76,7 @@ $(function(){
 	// Select a Make and the corresponding Models will be selected from localStorage
 	$('#make').change(function(){
 
+		$('.warning').slideUp(200);
 		// Removes previous car models & years if a make had been previously selected 
 		$('#model option').slice(1).remove();
 		$('#year option').slice(1).remove();
@@ -98,6 +98,7 @@ $(function(){
 	// Select a Model and the Years for this model will be selected from localStorage
 	$('#model').change(function(){
 
+		$('.warning').slideUp(200);
 		// Removes previous model years if a year had previously been selected
 		$('#year option').slice(1).remove();
 		// Hides car-name, car-result & prices divs if user re-selects
@@ -117,6 +118,8 @@ $(function(){
 	});
 
 	$('#year').change(function(){
+
+		$('.warning').slideUp(200);
 		// Hides car-name, car-result & prices divs if user re-selects
 		$('.car-name').hide();
 		$('.car-result').hide();
@@ -137,20 +140,21 @@ $(function(){
 		var carMake = makeSelection();
 		var carModel = modelSelection();
 		var carYear = yearSelection();
-		var carData = getCarData();
-		var make = carData.makes[carMake].niceName;
-		var model = carData.makes[carMake].models[carModel].niceName;
-		var year = carData.makes[carMake].models[carModel].years[carYear].year;
-
 		// If user doesn't select a make, model or year, an alert will appear
-		if (year == "Select Year") {
-			// Change to a slideDown alert
-			alert("Oops! Please make sure you have selected a Make, Model, and Year for your car so that we can retrieve it's information");
+		if (carMake == "Select Make" || carModel == "Select Model" || carYear == "Select Year") {
+			$('.warning').slideDown(200);
 		} 
 		else {			
+			var carData = getCarData();
+			var make = carData.makes[carMake].niceName;
+			var model = carData.makes[carMake].models[carModel].niceName;
+			var year = carData.makes[carMake].models[carModel].years[carYear].year;
 			getCarStyles(make, model, year);
 		}	
 	});
+		
+
+		
 
 	// Use make, model, and year values to fetch car styles
 	var getCarStyles = function(make, model, year){

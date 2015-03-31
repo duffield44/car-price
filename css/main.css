@@ -137,6 +137,12 @@ input {
 	text-align: center;
 }
 
+.warning {
+	display: none;
+	padding: 0.5rem 2rem 0 2rem;
+	color: Red;
+}
+
 
 /*--- Car Name Section ---*/
 
