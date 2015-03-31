@@ -239,7 +239,7 @@ input {
 	position: absolute;
 	background: White;
 	width: 82%; 
-	left: 20px;
+	left: 10px;
 	top: -20px;
 	padding: 0.5rem;
 	border: 1px solid #031CA6;
@@ -323,6 +323,9 @@ input {
 		float: none;
 		width: 100%;
 	}
+	.car-name h2 {
+		font-size: 1.8em;
+	}
 	.appraise {
 		margin-top: 2rem;
 	}
@@ -348,17 +351,35 @@ input {
 }
 
 @media only screen and (max-width: 470px) {
+	.car-name {
+		font-size: 0.9em;
+	}
 	.tmv {
 		font-size: 0.7em;
 	}
 	.prices li {
 		width: 70%;
 	}
+	.popup {
+		width: 100%;
+	}
 }
 
 @media only screen and (max-width: 440px) {
 	.header .title {
 		font-size: 4em;
+	}
+	.car-name {
+		font-size: 0.8em;
+	}
+}
+
+@media only screen and (max-width: 410px) {
+	.car-name {
+		font-size: 0.7em;
+	}
+	.popup {
+		font-size: 0.7em;
 	}
 }
 
