@@ -233,6 +233,15 @@ input {
 	color: Black;
 }
 
+.clear {
+	overflow: auto;
+}
+
+.details-warning {
+	display: none;
+	margin-top: 0.5rem;
+	color: Red;
+}
 /*--- Popup Box ---*/
 
 .popup-container {
@@ -309,7 +318,7 @@ input {
 
 
 .hidden {
-	display: none;
+	display: ;
 }
 
 /*--- Responsive Media Queries ---*/

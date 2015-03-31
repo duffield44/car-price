@@ -227,8 +227,15 @@ $(function(){
 		var id = carStyles.styles[style].id;
 		var condition = $('#condition option:selected').val();
 		var mileage = $('#mileage').val();
-		var zip = $('#zipcode').val();		
-		getTmv(id, condition, mileage, zip);		
+		var zip = $('#zipcode').val();
+		console.log(condition);		
+		if (condition == "" || mileage == "" || zip == "") {
+			$('.details-warning').slideDown(200);
+		}
+		else {		
+			$('.details-warning').delay(300).slideUp(200);	
+			getTmv(id, condition, mileage, zip);
+		}		
 	});
 
 	// Makes Ajax call to Edmunds API for TMV
