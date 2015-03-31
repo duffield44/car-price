@@ -187,7 +187,7 @@ input {
 }
 
 .selections {
-	padding: 3rem 1rem;
+	padding: 1.5rem 1rem 3rem 1rem;
 	border-radius: 5px;
 	background-color: #F1A574;
 	overflow: auto;
@@ -397,7 +397,7 @@ input {
 
 @media only screen and (max-width: 410px) {
 	.car-name h2 {
-		font-size: 1.6em;
+		font-size: 1.4em;
 	}
 	.car-name h3 {
 		font-size: 0.9em;
