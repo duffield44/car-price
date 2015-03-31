@@ -1,5 +1,6 @@
 $(function(){
 
+	// GLOBAL SELECTED VALUES
 	var makeSelection = function(){
 		var select = $('#make option:selected').val();
 		return select;
@@ -19,39 +20,29 @@ $(function(){
 		var style = $('#choose-style option:selected').val();
 		return style;
 	}
-		
+	
+	// GET CAR DATA FROM LOCAL STORAGE
 	var getCarData = function(){
 		var cars = JSON.parse(window.localStorage.getItem('cars'));
 		return cars;
 	}
 
+	// GET CAR STYLE DATA FROM LOCAL STORAGE
 	var getStyleData = function(){
 		var styles = JSON.parse(window.localStorage.getItem('styles'));
 		return styles;
-	}
+	}	
 
-	var showCarStyles = function(){
-		var carStyles = getStyleData();
-		console.log(carStyles);
-
-		$('#choose-style option').slice(1).remove();
-		$('.car-name').slideDown(300);
-
-		$.each(carStyles.styles, function(i, style){
-			$('#choose-style').append('<option value="'+i+'">' + style.name + '</option>');
-		});
-	}
-
-	// Setting height of background img
+	// BACKGROUND IMAGE HEIGHT
 	var windowHeight = $(window).height();
 	$('body').css('min-height', windowHeight);
 
-
+	// INITIAL AJAX CALL FOR CAR DATA
 	var request = {
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
 		};
-
+	// Ajax Call to Edmunds.com API	
 	$.ajax({
 			url: "https://api.edmunds.com/api/vehicle/v2/makes",
 			data: request,
@@ -60,7 +51,7 @@ $(function(){
 		})
 		.done(function(result){
 			console.log(result);
-
+			// List Car Makes in "Select Make" dropdown
 			$.each(result.makes, function(i, make){
 				$('#make').append('<option value="' + i + '">' + make.name + '</option>');	
 			});		
@@ -68,12 +59,13 @@ $(function(){
 			// Loading gif fadeout
 			$('.gif, .gif-background').fadeOut(300);
 
+			// Store Car Data in localStorage
 			var carData = JSON.stringify(result);
 			window.localStorage.setItem('cars', carData);
 		});	
 
 	
-	// Select a Make and the corresponding Models will be selected from localStorage
+	// SELECT MAKE
 	$('#make').change(function(){
 
 		$('.warning').slideUp(200);
@@ -84,10 +76,10 @@ $(function(){
 		$('.car-name').hide();
 		$('.car-result').hide();
 		$('.prices').hide();
-		// Add Make Name to h2 tag
+		// Add Make Name to .car-name h2 tag
 		var makeText = $('#make option:selected').text();
 		$('#make-name').text(makeText);
-		
+		// List Models in "Select Model" dropdown
 		var carMake = makeSelection();		
 		var carData = getCarData();		
 		$.each(carData.makes[carMake].models, function(i, model){
@@ -95,7 +87,7 @@ $(function(){
 		});
 	});
 
-	// Select a Model and the Years for this model will be selected from localStorage
+	// SELECT MODEL
 	$('#model').change(function(){
 
 		$('.warning').slideUp(200);
@@ -105,10 +97,10 @@ $(function(){
 		$('.car-name').hide();
 		$('.car-result').hide();
 		$('.prices').hide();
-		// Add Model Name to h2 tag	
+		// Add Model Name to .car-name h2 tag	
 		var modelText = $('#model option:selected').text();
 		$('#model-name').text(modelText);
-
+		// List Years in "Select Year" dropdown
 		var carMake = makeSelection();
 		var carModel = modelSelection();
 		var carData = getCarData();
@@ -117,6 +109,7 @@ $(function(){
 		});
 	});
 
+	// SELECT YEAR
 	$('#year').change(function(){
 
 		$('.warning').slideUp(200);
@@ -124,46 +117,41 @@ $(function(){
 		$('.car-name').hide();
 		$('.car-result').hide();
 		$('.prices').hide();
-		//Add Year to h2 tag
+		//Add Year to .car-name h2 tag
 		var yearText = $('#year option:selected').text();
 		$('#year-name').text(yearText);
 	});
 
-	$('#choose-style').change(function(){
-		// Add car style to h3 tag
-		var styleText = $('#choose-style option:selected').text();
-		$('.car-style').text(styleText);
-	})
 
-	// Click Go to fetch car styles
+
+	// CLICK GO BUTTON
 	$('#go-button').click(function(){
 		var carMake = makeSelection();
 		var carModel = modelSelection();
 		var carYear = yearSelection();
-		// If user doesn't select a make, model or year, an alert will appear
+		
 		if (carMake == "Select Make" || carModel == "Select Model" || carYear == "Select Year") {
+			// If user doesn't select a make, model or year
 			$('.warning').slideDown(200);
 		} 
-		else {			
+		else {	
+			// Get Styles of car selected
 			var carData = getCarData();
 			var make = carData.makes[carMake].niceName;
 			var model = carData.makes[carMake].models[carModel].niceName;
 			var year = carData.makes[carMake].models[carModel].years[carYear].year;
 			getCarStyles(make, model, year);
 		}	
-	});
-		
+	});	
 
-		
-
-	// Use make, model, and year values to fetch car styles
+	// AJAX CALL TO GET STYLES OF CAR SELECTED
 	var getCarStyles = function(make, model, year){
 		
 		var request = {
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'			
 		};
-
+		// Ajax Call to Edmunds.com API
 		$.ajax({
 			url: "https://api.edmunds.com/api/vehicle/v2/"+make+"/"+model+"/"+year+"/styles",
 			data: request,
@@ -172,22 +160,45 @@ $(function(){
 		}) 
 		.done(function(result){
 			console.log(result);
+			// Store car styles in localStorage
 			var carStyles = JSON.stringify(result);
 			window.localStorage.setItem('styles', carStyles);
+			// Show car styles
 			showCarStyles();
 		});
 	}
 
-	// Click Start Appraisal
+	// SHOW CAR STYLES FOR USER TO SELECT
+	var showCarStyles = function(){
+		var carStyles = getStyleData();
+		console.log(carStyles);
+		// SlideDown .car-name section
+		$('#choose-style option').slice(1).remove();
+		$('.car-name').slideDown(300);
+		// List Car Styles in "Choose Style" dropdown
+		$.each(carStyles.styles, function(i, style){
+			$('#choose-style').append('<option value="'+i+'">' + style.name + '</option>');
+		});
+	}
+
+	// CHOOSE STYLE
+	$('#choose-style').change(function(){
+		// Add car style to h3 tag
+		var styleText = $('#choose-style option:selected').text();
+		$('.car-style').text(styleText);
+	})
+
+	// CLICK START APPRAISAL
 	$('#start-appraise').click(function(){
 		var carStyles = getStyleData();
 		var style = selectedStyle();
 		var styleId = carStyles.styles[style].id;
 		console.log(styleId);
+		// Get image of car selected
 		getCarPic(styleId);
 	});
 
-	// Performs ajax call to Edmunds API to retrieve the user's selected car image
+	// AJAX CALL TO GET PICTURE OF CAR SELECTED
 	var getCarPic = function(Id){
 
 		// Start loading gif
@@ -199,7 +210,7 @@ $(function(){
 			comparator: 'simple' ,			
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
 		};
-
+		// Ajax Call to Edmunds.com API
 		$.ajax({
 			url: "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid",
 			data: request,
@@ -208,9 +219,9 @@ $(function(){
 		})
 		.done(function(result){
 			console.log(result);
-			// Show car img and appraisal details
 			var url = result[0].id;
-			var imgUrl = url.slice(9);			
+			var imgUrl = url.slice(9);
+			// Show car img and appraisal details		
 			$('#car-image').attr('src', 'http://media.ed.edmunds-media.com' + imgUrl + '_500.jpg');
 			$('#car-image').load(function(){
 				$('.gif, .gif-background').fadeOut(500);
@@ -220,7 +231,7 @@ $(function(){
 		});
 	}
 
-	// Click Appraise Car to getTmv()
+	// CLICK PRICE MY RIDE BUTTON
 	$('#appraise-car').click(function(){
 		var carStyles = getStyleData();
 		var style = selectedStyle();
@@ -228,17 +239,18 @@ $(function(){
 		var condition = $('#condition option:selected').val();
 		var mileage = $('#mileage').val();
 		var zip = $('#zipcode').val();
-		console.log(condition);		
 		if (condition == "" || mileage == "" || zip == "") {
+			// If details are not filled in
 			$('.details-warning').slideDown(200);
 		}
 		else {		
+			// Get True Market Value of Car
 			$('.details-warning').delay(300).slideUp(200);	
 			getTmv(id, condition, mileage, zip);
 		}		
 	});
 
-	// Makes Ajax call to Edmunds API for TMV
+	// AJAX CALL TO GET TRUE MARKET VALUE
 	var getTmv = function(id, condition, mileage, zip){
 
 		var request = {
@@ -249,7 +261,7 @@ $(function(){
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
 		}
-
+		// Ajax Call to Edmunds.com API
 		$.ajax({
 			url: "https://api.edmunds.com/v1/api/tmv/tmvservice/calculateusedtmv",
 			data: request,
@@ -267,7 +279,7 @@ $(function(){
 		});
 	}
 
-	// Click on info buttons
+	// CLICK ON INFO BUTTONS
 	$('.car-condition i').click(function(){
 		$('.popup').show();
 	});
