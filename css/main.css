@@ -303,7 +303,7 @@ input {
 
 
 .hidden {
-	display: ;
+	display: none;
 }
 
 /*--- Responsive Media Queries ---*/
@@ -351,8 +351,11 @@ input {
 }
 
 @media only screen and (max-width: 470px) {
-	.car-name {
-		font-size: 0.9em;
+	.car-name h2 {
+		font-size: 2em;
+	}
+	.car-name h3 {
+		font-size: 1.1em;
 	}
 	.tmv {
 		font-size: 0.7em;
@@ -369,14 +372,20 @@ input {
 	.header .title {
 		font-size: 4em;
 	}
-	.car-name {
-		font-size: 0.8em;
+	.car-name h2 {
+		font-size: 1.8em;
+	}
+	.car-name h3 {
+		font-size: 1em;
 	}
 }
 
 @media only screen and (max-width: 410px) {
-	.car-name {
-		font-size: 0.7em;
+	.car-name h2 {
+		font-size: 1.6em;
+	}
+	.car-name h3 {
+		font-size: 0.9em;
 	}
 	.popup {
 		font-size: 0.7em;

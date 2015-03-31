@@ -42,6 +42,12 @@ $(function(){
 		});
 	}
 
+	// Setting height of background img
+	var windowHeight = $(window).height();
+	console.log(windowHeight);
+	$('body').css('min-height', windowHeight);
+
+
 	var request = {
 			fmt: 'json',
 			api_key: 'fk5fszh84rrtvy5kz3jj9pey'
