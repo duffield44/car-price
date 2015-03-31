@@ -3,7 +3,7 @@
 body {
 	font-size: 1em;
 	font-family: "Open Sans", sans-serif;
-	background-image: url("../images/car-background-modified.png");
+	background-image: url("../images/price-my-ride.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 0 1rem;
@@ -318,7 +318,7 @@ input {
 
 
 .hidden {
-	display: ;
+	display: none;
 }
 
 /*--- Responsive Media Queries ---*/
