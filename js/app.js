@@ -1,25 +1,16 @@
 $(function(){
 
 	// GLOBAL SELECTED VALUES
-	var makeSelection = function(){
-		var select = $('#make option:selected').val();
-		return select;
+	function selection(type){
+		return function(){
+			var select = $('#' + type + ' option:selected').val();
+			return select;
+		}
 	}
-
-	var modelSelection = function(){
-		var select = $('#model option:selected').val();
-		return select;
-	}		
-
-	var yearSelection = function(){
-		var select = $('#year option:selected').val();
-		return select;
-	}	
-
-	var selectedStyle = function(){
-		var style = $('#choose-style option:selected').val();
-		return style;
-	}
+	var makeSelection = selection('make');
+	var modelSelection = selection('model');
+	var yearSelection = selection('year');
+	var selectedStyle = selection('choose-style');
 	
 	// GET CAR DATA FROM LOCAL STORAGE
 	var getCarData = function(){
